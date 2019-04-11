@@ -3,14 +3,14 @@
 #include<string.h>
 
 
-typedef struct Article{
+typedef struct Article {
 
-     int id_article;
-     char nom_cl[30];
-     int num_tele;
-     int prix;
+    int id_article;
+    char nom_cl[30];
+    int num_tele;
+    int prix;
 
-}Article;
+    } Article;
 
 typedef struct {
     int id;
