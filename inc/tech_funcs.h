@@ -2,6 +2,7 @@
 #define TECH_FUNCS_H_INCLUDED
 int exist();
 int rs_tech();
+int add_tech();
 
 
 
