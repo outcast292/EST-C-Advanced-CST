@@ -70,7 +70,7 @@ Article * init_Article(Article* a){
  }
  
  
- // repared Articles :  stac structure repair article function
+ // repared Articles :   structure repair article function
  
  typedef struct Article_repare{
 int id_Article;
@@ -97,6 +97,10 @@ p->taille =0;
  	
  	Article *a = (Article*)malloc(sizeof(Article));
  	init_Article(a);
+ 	int i,n;
+ 	printf("entre le nombre des article a ajouter : ");
+ 	scanf("%d",&n);
+ 	for(i=0;i<n;i++)
  	add_Article(a);
  	
  	
