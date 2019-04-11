@@ -15,7 +15,7 @@ int get_tech() { // func to give back the info of the user
     fclose(tmp);
     return t;
 }
-int add_tech(){ //func to add tech to the file
+int add_tech() { //func to add tech to the file
     int id=1;
     char nom[30],prenom[30];
     printf("\n\tentrer votre nom");scanf("%s",&nom);
