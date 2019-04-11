@@ -4,9 +4,6 @@
 typedef struct { //structure pour la date
     int j,m,a;
     } date;
-typedef struct etat { //strucutre pour l'etat de job
-    int t;
-    } etat;
 typedef struct { // structure pour le job
     int id,id_tech,id_article;
     date d_rep;
@@ -19,7 +16,7 @@ typedef struct pc {
     int num_tele;
     int tarif;
     date d_rec;
-    etat et;
+    int etat;
     } pc;
 
 typedef struct {

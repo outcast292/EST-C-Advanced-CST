@@ -31,10 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="fl/id" />
+		<Unit filename="README.md" />
 		<Unit filename="fl/jobs" />
+		<Unit filename="fl/pc" />
+		<Unit filename="fl/pc_id" />
 		<Unit filename="fl/tech" />
 		<Unit filename="inc/job_funcs.h" />
+		<Unit filename="inc/pc_funcs.h" />
 		<Unit filename="inc/structure.h" />
 		<Unit filename="inc/tech_funcs.h" />
 		<Unit filename="main.c">
@@ -44,6 +47,9 @@
 			<Option compilerVar="CPP" />
 			<Option compile="0" />
 			<Option link="0" />
+		</Unit>
+		<Unit filename="src/pc_funcs.c">
+			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/structure.c">
 			<Option compilerVar="CC" />

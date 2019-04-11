@@ -1,8 +1,9 @@
 # README
 ## code exp
-	### src
-	    src contains the main functions for the work
-	    #### job_funcs
+	
+### src
+	src contains the main functions for the work
+	#### job_funcs
 	        whiche include the fucntions that will manage the jobs
 	    #### pc_funcs
 	        whiche include the fucntions that will manage the pieces
