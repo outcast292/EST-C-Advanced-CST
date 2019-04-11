@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1554976146 source:d:\est\s2\c\cst\main.c
+	<stdio.h>
+	<stdlib.h>
+	"inc/tech_funcs.h"
+
+1554976146 d:\est\s2\c\cst\inc\tech_funcs.h
+	"../inc/structure.h"
+
+1554976146 d:\est\s2\c\cst\inc\structure.h
+
+1554976146 source:d:\est\s2\c\cst\src\structure.c
+	"../inc/structure.h"
+
+1554976146 source:d:\est\s2\c\cst\src\tech_funcs.c
+	"../inc/tech_funcs.h"
+	"../inc/structure.h"
+	"stdio.h"
+
