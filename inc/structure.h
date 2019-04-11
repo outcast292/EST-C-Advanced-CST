@@ -8,20 +8,19 @@ typedef struct etat { //strucutre pour l'etat de job
     int t;
     } etat;
 typedef struct { // structure pour le job
-    int id,id_tech;
-    char nom_client[30];
-    date d_rec,d_rep;
-    etat et_job;
+    int id,id_tech,id_article;
+    date d_rep;
     } job;
 
-typedef struct article {
+typedef struct pc {
 
     int id_article;
     char nom_cl[30];
     int num_tele;
-    int prix;
-
-    } article;
+    int tarif;
+    date d_rec;
+    etat et;
+    } pc;
 
 typedef struct {
     int id;
