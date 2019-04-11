@@ -4,12 +4,12 @@
 
 
 typedef struct Article{
-	
+
      int id_article;
-     char *nom;
+     char nom_cl[30];
      int num_tele;
      int prix;
-	
+
 }Article;
 
 typedef struct {
