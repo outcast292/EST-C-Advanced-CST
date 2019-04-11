@@ -64,10 +64,7 @@ Article * init_Article(Article* a){
  
  }
  
- Article * go_to_repare(Article *a){
- FILE *g= fopen("go_to_repare.txt","r+");
- fprintf(g,"%d\n",a->id_article);
- }
+
  
  
  // repared Articles :   structure repair article function
@@ -79,7 +76,7 @@ struct Article_repare *suivant;
 
 typedef struct pile{
 
-Article *sommet;
+Article_repare *sommet;
 int taille;
 int Article_id;
 }pile;
@@ -92,17 +89,68 @@ p->taille =0;
  
  
  
+  int go_to_repare(Article *a){
+ 	char nomp[50];
+ 	
+ 	printf("\nentre le nom de la piece a repare : ");
+ 	scanf("%s",nomp);
+ 	
+int i;
+ 	Article * tmp = a;
+ 	for(i=0;i<4;i++){
+ 		
+ 		if(strcmp(tmp->nom_art,nomp) == 0) {
+ 			
+ 			FILE *g= fopen("go_to_repare.txt","w+");
+ fprintf(g,"%d\n",tmp->id_article);
+ fclose(g);
+ printf("confirme");
+ return 1;
+		 }else{
+		 	
+		 	tmp = tmp->suivant;
+		 	
+		 }
+ 		
+ 		
+	 }
+ }
+ 
+ 
+ int empilement(pile *p){
+ 	
+ 	Article_repare * nva=(Article_repare*)malloc(sizeof(Article_repare));
+ 	if (nva==NULL) return 0;
+ 	
+ 	FILE *m = fopen("go_to_repare.txt","r");
+ 	fscanf(m,"%d\n",p->Article_id);
+ 	
+ 	nva->suivant = p->sommet;
+ 	p->sommet=nva;
+ 	p->taille++;
+ 	
+ 	
+ 	return 1;
+ }
+ 
  
  main(){
  	
  	Article *a = (Article*)malloc(sizeof(Article));
+	pile *p = (pile*)malloc(sizeof(pile));
  	init_Article(a);
+ 	init_pile(p);
  	int i,n;
- 	printf("entre le nombre des article a ajouter : ");
+ 	/*printf("entre le nombre des article a ajouter : ");
  	scanf("%d",&n);
+ 	
+ 	
  	for(i=0;i<n;i++)
  	add_Article(a);
+ 	*/
  	
+ 	//go_to_repare(a);
+ 	//empilement(p);
  	
  }
 
