@@ -1,6 +1,13 @@
 #include "../inc/funcs.h"
 #include <string.h>
+#include <stdio.h>
+int save_tech(tech* ptr) {
+    FILE* tmp=fopen("fl/tech.txt","a");
+    fprintf(tmp,"%d %s %s",ptr->id,ptr->nom,ptr->prenom);
+    fclose(tmp);
+    return 0;
 
+}
 tech* add_tech(char* nom,*char prenom){
     FILE* tmp=fopen("fl/id","rb");
     if(tmp==NULL){
@@ -19,6 +26,10 @@ tech* add_tech(char* nom,*char prenom){
     tmp=fopen("fl/id","wb");
     fprintf(tmp,"%d",id+1);
     fclose(tmp);
-    return ptr;
-
+    if(save_tech(ptr)==1){
+        return 0;
+    }
+    else{
+        return -1:
+    }
 }
