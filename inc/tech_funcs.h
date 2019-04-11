@@ -1,7 +1,8 @@
+#include "../inc/structure.h"
 #ifndef TECH_FUNCS_H_INCLUDED
 #define TECH_FUNCS_H_INCLUDED
 int exist();
-int rs_tech();
+tech get_tech();
 int add_tech();
 
 
