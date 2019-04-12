@@ -28,3 +28,8 @@ void afficher_job()
         printf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a)
     }
 }
+
+
+// add jobs to the stack 
+
+

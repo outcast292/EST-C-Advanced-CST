@@ -22,6 +22,13 @@ typedef struct pc
     int etat;
 } pc;
 
+
+typedef struct
+
+
+
+
+
 typedef struct
 {
     int id;
