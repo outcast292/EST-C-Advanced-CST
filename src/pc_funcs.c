@@ -31,3 +31,28 @@ void shw_pc(){
     }
 
 }
+
+// pc_delet function
+// copie all the ids of all pieces except the id of the piece we want to delet to new file|| delet the old file and renam the new file with the same name  
+
+void sup_pc(){
+	int id,tmp;
+	printf("entre l'id de la piece a supprimer : "); scanf("%d",&id);
+	FILE *f= fopen("fl/pc_id","r");
+	FILE *g= fopen("fl/pc_id2","a");
+	
+	while(!(feof(f))){
+		fscanf(f,"%d",&tmp);
+		
+		if(tmp == id);
+		else
+		 fprintf(g,"%d",id);
+		
+	}
+	remove("fl/pc_id2");
+	rename("fl/pc_id2","fl/pc_id")
+	fclose(f);
+	fclose(g);
+	
+	
+}
