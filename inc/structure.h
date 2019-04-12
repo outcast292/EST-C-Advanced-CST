@@ -31,3 +31,7 @@ typedef struct
 void date_add(date *d);
 
 #endif // STRUCTURE_H_INCLUDED
+
+// structure pille pour les jobs
+
+ 
