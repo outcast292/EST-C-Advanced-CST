@@ -17,3 +17,34 @@
 	"../inc/structure.h"
 	"stdio.h"
 
+1555104073 source:d:\projetcs\cst\main.c
+	<stdio.h>
+	<stdlib.h>
+	"inc/tech_funcs.h"
+	"inc/screen_funcs.h"
+
+1554979270 d:\projetcs\cst\inc\tech_funcs.h
+	"../inc/structure.h"
+
+1555102606 d:\projetcs\cst\inc\structure.h
+
+1555103869 d:\projetcs\cst\inc\screen_funcs.h
+
+1555103820 source:d:\projetcs\cst\src\screen_funcs.c
+	<conio.h>
+
+1555102606 source:d:\projetcs\cst\src\structure.c
+	"../inc/structure.h"
+
+1555102618 source:d:\projetcs\cst\src\tech_funcs.c
+	"../inc/tech_funcs.h"
+	"../inc/structure.h"
+	"stdio.h"
+
+1555104058 source:d:\projetcs\cst\src\pc_funcs.c
+	"../inc/pc_funcs.h"
+	"../inc/structure.h"
+	"stdio.h"
+
+1555103285 d:\projetcs\cst\inc\pc_funcs.h
+

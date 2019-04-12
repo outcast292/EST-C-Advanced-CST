@@ -1,15 +1,17 @@
 
 #ifndef STRUCTURE_H_INCLUDED
 #define STRUCTURE_H_INCLUDED
-typedef struct { //structure pour la date
+typedef struct   //structure pour la date
+{
     int j,m,a;
-    } date;
-typedef struct { // structure pour le job
+} date;
+typedef struct   // structure pour le job
+{
     int id,id_tech,id_article;
-    date d_rep;
-    } job;
+} job;
 
-typedef struct pc {
+typedef struct pc
+{
 
     int id_article;
     char nom_cl[15];
@@ -18,13 +20,14 @@ typedef struct pc {
     int tarif;
     date d_rec,d_rep,d_sort; //d_rec pour la reception , d_rep pour la reparation , d_sort pour la sortie de l'article
     int etat;
-    } pc;
+} pc;
 
-typedef struct {
+typedef struct
+{
     int id;
     char nom[30];
     char prenom[30];
-    } tech;
+} tech;
 void date_add(date *d);
 
 #endif // STRUCTURE_H_INCLUDED
