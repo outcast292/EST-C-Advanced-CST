@@ -1,6 +1,6 @@
 # README
 ## code exp
-	
+
 ### src
 	src contains the main functions for the work
 	#### job_funcs
@@ -20,7 +20,6 @@
 	### more
 	    the code will manage pieces which status will be :
 	    0-recieved
-	    1-diagnose
-	    2-repaired
+        1-repaired
 	    -1-unrepaired
-	    4-outgoing
+	    2-outgoing

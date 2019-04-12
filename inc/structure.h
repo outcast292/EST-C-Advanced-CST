@@ -12,10 +12,11 @@ typedef struct { // structure pour le job
 typedef struct pc {
 
     int id_article;
-    char nom_cl[30];
+    char nom_cl[15];
+    char desc[50];
     int num_tele;
     int tarif;
-    date d_rec;
+    date d_rec,d_rep,d_sort; //d_rec pour la reception , d_rep pour la reparation , d_sort pour la sortie de l'article
     int etat;
     } pc;
 
