@@ -42,16 +42,16 @@ void shw_all_pc()
         switch (etat)
         {
         case 0:
-            printf(" recu le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a);
+            printf(" recu le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a);
             break;
         case 1:
-            printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
+            printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
             break;
         case -1:
-            printf("recu le %d/%d/%d,passe en reparation le %d/%d/%d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
+            printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
             break;
         case 2:
-            printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d, sortie le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+            printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
             break;
         default:
             break;
@@ -80,16 +80,16 @@ void srch_pc()
             switch (etat)
             {
             case 0:
-                printf(" recu le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a);
+                printf(" recu le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a);
                 break;
             case 1:
-                printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
+                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
                 break;
             case -1:
-                printf("recu le %d/%d/%d,passe en reparation le %d/%d/%d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
+                printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
                 break;
             case 2:
-                printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d, sortie le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
                 break;
             default:
                 break;
@@ -121,16 +121,16 @@ void shw_pc()
             switch (etat)
             {
             case 0:
-                printf(" recu le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a);
+                printf(" recu le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a);
                 break;
             case 1:
-                printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
+                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif);
                 break;
             case -1:
-                printf("recu le %d/%d/%d,passe en reparation le %d/%d/%d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
+                printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
                 break;
             case 2:
-                printf("recu le %d/%d/%d,repare le %d/%d/%d pour un tarif de %d, sortie le %d/%d/%d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
                 break;
             default:
                 break;
