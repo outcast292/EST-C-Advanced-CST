@@ -32,7 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="README.md" />
-		<Unit filename="fl/jobs" />
 		<Unit filename="fl/pc" />
 		<Unit filename="fl/pc_id" />
 		<Unit filename="fl/tech" />

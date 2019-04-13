@@ -116,9 +116,9 @@ void shw_pc()
     scanf("%d",&s_et);
     while(!(feof(f)))
     {
-		fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,&etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,&etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
         // for what this condition !!!!!
-		if(etat==s_et)
+        if(etat==s_et)
         {
             x++;
             printf("\n %d %s 0%d ",id,nom,num);

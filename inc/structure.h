@@ -9,7 +9,7 @@ typedef struct   //structure pour la date
 typedef struct pc
 {
     int id_article;
-     int num_tele;
+    int num_tele;
     char nom_clt[50];
     int tarif;
     date d_rec,d_rep,d_sort; //d_rec pour la reception , d_rep pour la reparation , d_sort pour la sortie de l'article
@@ -18,21 +18,17 @@ typedef struct pc
 
 typedef struct job  // structure pour le job
 {
-    int id,id_tech;
+    int tech_id;
     struct job *suivant;
-    pc *pic
+pc pic:
 } job;
 
-
-
-
-
-
-typedef struct pile{
-
- job *sommet;
- int taille ;
-}pile;
+typedef struct file
+{
+    job *tete;
+    job *que;
+    int taille ;
+} file;
 
 
 
@@ -51,4 +47,4 @@ void date_add(date *d);
 
 // structure pille pour les jobs
 
- 
+
