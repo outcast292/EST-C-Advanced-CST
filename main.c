@@ -5,6 +5,7 @@
 #include  "time.h"
 time_t now;
 int hours, minutes, seconds, day, month, year;
+file F;
 int main()
 {
     time(&now);

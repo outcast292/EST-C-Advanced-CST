@@ -16,8 +16,8 @@
 // f=fopen("../fl/job","a");
 // fprintf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a);
 //}
-void afficher_job()
-{
+//void afficher_job()
+/*{
     int n;
     job tmp;
     printf("afficher tout les jobs : ");
@@ -28,7 +28,7 @@ void afficher_job()
         fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
         printf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a)
     }
-}
+}*/
 
 
 // initialiser pille
@@ -42,28 +42,41 @@ void init_file(file *f)
 }
 
 
-// fonction d'empilement
-void empilement(pile *p, int id)
+// fonction d'enfilemennt
+void enfiler(file *f,pc x)
 {
-    job *n_ele = (job*)malloc(sizeof(job));
+    job *n = (job*)malloc(sizeof(job));
 
-    if(n_ele == NULL)
+    if(n == NULL)
     {
         printf("allocation impossibel !");
         exit(1);
     }
-    else
+   n->pic=(pc*)malloc(sizeof(pc));
+   if(n->pic == NULL)
     {
-
-
-        p->sommet->id = id;
-        n_ele->suivant = p->sommet;
-        p->sommet = n_ele;
-        p->taille++;
+        printf("allocation impossibel !");
+        exit(1);
     }
-
-
-
+    n->pic->id=x->id;
+    n->pic->num=x->num;
+    n->pic->tarif=x->tarif;
+    n->pic->d_rec=x->d_rec;
+    n->pic->etat=x->etat;
+    strcpy(n->pic->nom_clt,x->nom_clt);
+    if(f->taille==0){
+        f->tete=n;
+        f->que=n;
+        n->suivant=NULL;
+    }
+    else{
+        f->que->suivant=n;
+        f->que=n;
+        n->suivant=NULL;
+    }
+    f->taille++;
+}
+/*
 // add jobs to the stack ( we gonna only add the id of the job to the stack and change the stat based on the id
 
     void go_to_stack(pile *p)
@@ -128,8 +141,37 @@ void empilement(pile *p, int id)
         rename("../fl/jobs2","../fl/jobs");
 
         return 0;
+    }*/
+void file_aff(file *f){
+    printf("tous les articles recus et pas encore diagnostiqué : \n ");
+    job *tmp=f->tete;
+    for(int i=0;i<f->taille;i++){
+            printf(" %d %s 0%d    recu le %02d/%02d/%02d\n",tmp->id,tmp->nom_clt,tmp->num,tmp->d_rec.j,tmp->d_rec.m,tmp->d_rec.a);
+            tmp=tmp->suivant;
+        }
+}
+//defilement + call pour changement d'etat
+void defiler(file *f){
+    job *tmp=f->tete;
+    int n=3;
+    if(f->taille==0){
+        printf("aucun job est disponible");
+        exit(1);
     }
+    printf("%d %s 0%d    recu le %02d/%02d/%02d\n",tmp->id,tmp->nom_clt,tmp->num,tmp->d_rec.j,tmp->d_rec.m,tmp->d_rec.a);
+    do{
+            printf("est-que l'article est reparé: \n1-oui\n2-non : ");scanf("%d",&n);
+    }while(n!=1 || n!=2);
+    if(n==1){
+        change(tmp->id,1);
+    }else{
+        change(tmp->id,2);
+    }
+    f->tete=f->tete->suivant;
+    free(tmp);
+    f->taille--;
 
+}
 
 
 

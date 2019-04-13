@@ -8,8 +8,8 @@ typedef struct   //structure pour la date
 
 typedef struct pc
 {
-    int id_article;
-    int num_tele;
+    int id;
+    int num;
     char nom_clt[50];
     int tarif;
     date d_rec,d_rep,d_sort; //d_rec pour la reception , d_rep pour la reparation , d_sort pour la sortie de l'article
@@ -18,9 +18,8 @@ typedef struct pc
 
 typedef struct job  // structure pour le job
 {
-    int tech_id;
     struct job *suivant;
-pc pic:
+    pc *pic:
 } job;
 
 typedef struct file
