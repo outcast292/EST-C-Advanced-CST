@@ -23,7 +23,19 @@ typedef struct pc
 } pc;
 
 
-typedef struct
+typedef struct{
+
+    char *pc_rep;
+    struct Element * suivant;
+
+}job_rep;
+
+typedef struct pile{
+
+ job_rep *sommet;
+ int taille ;
+}pile;
+
 
 
 

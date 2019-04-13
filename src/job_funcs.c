@@ -24,12 +24,34 @@ void afficher_job()
     FILE* f=fopen("../fl/jobs","r");
     while(!feof(f))
     {
+    	// here must use f not tmp;
         fscanf(tmp,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
         printf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a)
     }
 }
 
 
+// initialiser pille
+
+void init_pile(pile *p){
+
+p->sommet = NULL;
+p->taille = 0;
+}
 // add jobs to the stack 
+
+int go_to_stack(pile *p){
+	
+	job tmp;
+	FILE *f= fopen("../fl/jobs","r");
+	 while(!feof(f))
+    {
+        fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
+        if (strcmp(tmp.et_job,""))
+        
+    }
+	
+	
+}
 
 
