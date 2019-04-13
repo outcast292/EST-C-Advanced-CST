@@ -8,6 +8,7 @@ typedef struct   //structure pour la date
 typedef struct   // structure pour le job
 {
     int id,id_tech,id_article;
+    char et_job[50];
 } job;
 
 typedef struct pc
@@ -23,10 +24,10 @@ typedef struct pc
 } pc;
 
 
-typedef struct{
+typedef struct job_rep{
 
-    char *pc_rep;
-    struct Element * suivant;
+    int id;
+    struct job_rep * suivant;
 
 }job_rep;
 
