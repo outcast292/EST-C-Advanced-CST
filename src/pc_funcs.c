@@ -11,6 +11,7 @@ void add_pc()
     fclose(f);
     f=fopen("fl/pc","a");
     char nom[15];
+    int tarif;
     printf("combien de article tu veux ajouter : ");
     scanf("%d",&n);
     for (int i=0; i<n ; i++)
@@ -20,7 +21,9 @@ void add_pc()
         printf("entrer le numero de client : ");
         scanf("%d",&num);
         date_add(&d);
-        fprintf(f,"%d %s 0%d %d %d/%d/%d 0/0/0 0/0/0 0",++id,nom,num,d.j,d.m,d.a);
+        printf("entre le tarif de la reparation : ");
+        scanf("%d",&tarif);
+        fprintf(f,"%d %s 0%d %d %d %d %d/%d/%d 0/0/0 0/0/0 0",++id,nom,num,tarif,0,d.j,d.m,d.a);
     }
     fclose(f);
     f=fopen("fl/pc_id","w");
@@ -37,7 +40,7 @@ void shw_all_pc()
     char nom[15];
     while(!(feof(f)))
     {
-        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a,&etat);
+        fscanf(f,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,&etat&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
         printf("\n %d %s 0%d ",id,nom,num);
         switch (etat)
         {
@@ -113,8 +116,9 @@ void shw_pc()
     scanf("%d",&s_et);
     while(!(feof(f)))
     {
-        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a,&etat);
-        if(etat==s_et)
+		fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,&nom,&num,&tarif,&etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+        // for what this condition !!!!!
+		if(etat==s_et)
         {
             x++;
             printf("\n %d %s 0%d ",id,nom,num);

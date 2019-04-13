@@ -1,15 +1,15 @@
-#include "../inc/job_funcs.h"
+
 #include "../inc/structure.h"
 #include "stdio.h"
 #include "string.h"
 void add_job(int id_tech)
-{
+{ 
     FILE *f=fopen("../fl/id","r");
     job tmp;
     fscanf(f,"%d",&tmp.id);
     tmp.id++;
     printf("entrer le nom de client");
-    scanf("%s",&tmp.nom_client);
+    scanf("%s",&tmp.nom_clt);
     date_add(&tmp.d_rec);
     tmp.et_job.t=0;
     fclose(f);
@@ -24,8 +24,8 @@ void afficher_job()
     FILE* f=fopen("../fl/jobs","r");
     while(!feof(f))
     {
-    	// here must use f not tmp;
-        fscanf(tmp,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
+    	
+        fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
         printf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a)
     }
 }
@@ -42,7 +42,7 @@ p->taille = 0;
 
 // fonction d'empilement 
 void empilement(pile *p, int id){
- job_rep *n_ele = (job_rep*)malloc(sizeof(job_rep));
+ job *n_ele = (job*)malloc(sizeof(job));
 
    if(n_ele == NULL) {printf("allocation impossibel !");
             exit(1);
@@ -57,7 +57,7 @@ void empilement(pile *p, int id){
 
 
 
-// add jobs to the stack ( we gonna onmy add the id of the job to the stack and change the stat based on the id 
+// add jobs to the stack ( we gonna only add the id of the job to the stack and change the stat based on the id 
 
 void go_to_stack(pile *p){
 	
@@ -90,8 +90,8 @@ void go_to_stack(pile *p){
 int delet_job_from_stack(pile *p){
 FILE *f =fopen("../fl/jobs","r");
 FILE *g=fopen("../fl/finished_jobs","a+");
-	job_rep tmp
-    job_rep *sup_ele;
+	job tmp
+    job *sup_ele;
     if(p->taille == 0)  return -1;
     sup_ele = p->sommet;
     p->sommet = p->sommet->suivant;
@@ -102,7 +102,7 @@ FILE *g=fopen("../fl/finished_jobs","a+");
     	
     	if(tmp.id == sup_ele->id){
     	
-		 fprintf(g,"%d %d %s %d/%d/%d",sup_ele.id,sup_ele.id_tech,sup_ele.nom_client,"fini",sup_ele.d_rep.j,sup_ele.d_rec.m,sup_ele.d_rec.a);
+		 fprintf(g,"%d %d %s %s %d/%d/%d",sup_ele.id,sup_ele.id_tech,sup_ele.nom_client,"fini",sup_ele.d_rep.j,sup_ele.d_rec.m,sup_ele.d_rec.a);
 		}
 		
 		else
