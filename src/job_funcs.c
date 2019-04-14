@@ -1,8 +1,10 @@
 #include "../inc/structure.h"
 #include "../inc/tech_funcs.h"
 #include "stdio.h"
+#include "stdlib.h"
 #include "string.h"
 #include "../inc/job_funcs.h"
+#include "../inc/pc_funcs.h"
 //void add_job(int id_tech)
 //{
 //    FILE *f=fopen("../fl/pc","r");
@@ -10,7 +12,7 @@
 //    fscanf(f,"%d",&tmp.id);
 //    tmp.id++;
 //    printf("entrer le nom de client");
-//   scanf("%s",&tmp.nom_clt);
+//   scanf("%s",&tmp.nom);
 // date_add(&tmp.d_rec);
 //   tmp.et_job.t=0;
 // fclose(f);
@@ -37,17 +39,20 @@
 void init_file(file *f)
 {
 
-    f->sommet = NULL;
-    f->sommet = NULL;
-    p->taille = 0;
+    f->tete = NULL;
+    f->que = NULL;
+    f->taille = 0;
 }
-void fil(file *f){
+void fil(file *f)
+{
     init_file(f);
     FILE *z=fopen("fl/pc","r");
     pc x;
-    while(!(feof(z))) {
-        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",x.id,x.nom,x.num,x.tarif,x.d_rec.j,x.d_rec.m,x.d_rec.a,x.d_rep.j,x.d_rep.m,x.d_rep.a,x.d_sort.j,x.d_sort.m,x.d_sort.a,x.etat);
-        if(x.etat==0){
+    while(!(feof(z)))
+    {
+        fscanf(z,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&x.id,x.nom,&x.num,&x.tarif,&x.etat,&x.d_rec.j,&x.d_rec.m,&x.d_rec.a,&x.d_rep.j,&x.d_rep.m,&x.d_rep.a,&x.d_sort.j,&x.d_sort.m,&x.d_sort.a);
+        if(x.etat==0)
+        {
             enfiler(f,x);
         }
     }
@@ -64,24 +69,26 @@ void enfiler(file *f,pc x)
         printf("allocation impossibel !");
         exit(1);
     }
-   n->pic=(pc*)malloc(sizeof(pc));
-   if(n->pic == NULL)
+    n->pic=(pc*)malloc(sizeof(pc));
+    if(n->pic == NULL)
     {
         printf("allocation impossibel !");
         exit(1);
     }
-    n->pic->id=x->id;
-    n->pic->num=x->num;
-    n->pic->tarif=x->tarif;
-    n->pic->d_rec=x->d_rec;
-    n->pic->etat=x->etat;
-    strcpy(n->pic->nom_clt,x->nom_clt);
-    if(f->taille==0){
+    n->pic->id=x.id;
+    n->pic->num=x.num;
+    n->pic->tarif=x.tarif;
+    n->pic->d_rec=x.d_rec;
+    n->pic->etat=x.etat;
+    strcpy(n->pic->nom,x.nom);
+    if(f->taille==0)
+    {
         f->tete=n;
         f->que=n;
         n->suivant=NULL;
     }
-    else{
+    else
+    {
         f->que->suivant=n;
         f->que=n;
         n->suivant=NULL;
@@ -155,36 +162,46 @@ void enfiler(file *f,pc x)
         return 0;
     }*/
 // func to show la file
-void file_aff(file *f) {
+void file_aff(file *f)
+{
     printf("tous les articles recus et pas encore diagnostiqué : \n ");
     job *tmp=f->tete;
-    for(int i=0;i<f->taille;i++){
-            printf(" %d %s 0%d    recu le %02d/%02d/%02d\n",tmp->id,tmp->nom_clt,tmp->num,tmp->d_rec.j,tmp->d_rec.m,tmp->d_rec.a);
-            tmp=tmp->suivant;
-        }
+    for(int i=0; i<f->taille; i++)
+    {
+        printf(" %d %s 0%d    recu le %02d/%02d/%02d\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
+        tmp=tmp->suivant;
+    }
 }
 //defilement + call pour changement d'etat
 void defiler(file *f)
 {
     job *tmp=f->tete;
     int n=3;
-    if(f->taille==0){
+    if(f->taille==0)
+    {
         printf("aucun job est disponible");
         exit(1);
     }
-    printf("%d %s 0%d    recu le %02d/%02d/%02d\n",tmp->id,tmp->nom_clt,tmp->num,tmp->d_rec.j,tmp->d_rec.m,tmp->d_rec.a);
-    do{
-            printf("est-que l'article est reparé: \n1-oui\n2-non : ");scanf("%d",&n);
-    }while(n!=1 || n!=2);
-    if(n==1){
-        change(tmp->id,1);
-    }else{
-        change(tmp->id,2);
+    printf("%d %s %10d  recu le %02d/%02d/%02d\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
+    do
+    {
+        printf("est-que l'article est reparé: \n1-oui\n2-non : ");
+        scanf("%d",&n);
+    }
+    while(n!=1 || n!=2);
+    if(n==1)
+    {
+        change(tmp->pic->id,1);
+    }
+    else
+    {
+        change(tmp->pic->id,2);
     }
     f->tete=f->tete->suivant;
     free(tmp);
     f->taille--;
-    if(f->taille!=0){
+    if(f->taille!=0)
+    {
         defiler(f);
     }
 

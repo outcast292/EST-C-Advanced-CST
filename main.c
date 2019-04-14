@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include  "inc/tech_funcs.h"
 #include  "time.h"
+#include  "inc/screen_funcs.h"
+#include  "inc/job_funcs.h"
+#include  "inc/pc_funcs.h"
 time_t now;
 int hours, minutes, seconds, day, month, year;
 file F;
@@ -25,5 +28,6 @@ int main()
     }
     tech t=get_tech();
     printf("Le %02d/%02d/%02d %02d:%02d\n\nbonjour %s %s  ",day,month,year,hours,minutes,t.nom,t.prenom);
-   menu(&F);
+    menu(&F);
+    change(1,2);
 }

@@ -1,7 +1,10 @@
 #include "../inc/pc_funcs.h"
 #include "../inc/structure.h"
 #include "stdio.h"
+#include "time.h"
+time_t now;
 //add a pc to the file
+
 void add_pc()
 {
     FILE* f=fopen("fl/pc_id","r");
@@ -107,10 +110,12 @@ void shw_pc()
     int id,num,tarif,etat,s_et=5,x=0;
     date d_rep,d_rec,d_sort;
     char nom[15];
-    do{
-            printf("tu veux afficher : \n0-les article recus\n1-les article repare\n-1-les article non repare\n2-les article sortie , votre choix : ");
-            scanf("%d",&s_et);
-    }while(s_et!=0&&s_et!=1&&s_et!=-1&&s_et!=2);
+    do
+    {
+        printf("tu veux afficher : \n0-les article recus\n1-les article repare\n-1-les article non repare\n2-les article sortie , votre choix : ");
+        scanf("%d",&s_et);
+    }
+    while(s_et!=0&&s_et!=1&&s_et!=-1&&s_et!=2);
     while(!(feof(f)))
     {
         fscanf(f,"%d %s %d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
@@ -157,8 +162,13 @@ void change(int x,int state)
         else
         {
             etat=state;
-            date_add(&d_rec);
-            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+            time(&now);
+            struct tm *local = localtime(&now);
+            if(state==1){
+                printf("merci d'entrer le prix de service ");
+                scanf("%d",&tarif);
+            }
+            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
         }
     }
     fclose(f);
@@ -167,8 +177,13 @@ void change(int x,int state)
     rename("fl/pc_tmp","fl/pc");
 }
 //fun to retrieve a pc
-void retrait(int x)
+void retrait()
 {
+    int x;
+    time(&now);
+    struct tm *local = localtime(&now);
+    printf("\n entrer l'id de l'article a retraire : ");
+    scanf("%d",&x);
     FILE *f=fopen("fl/pc","r"),*g=fopen("fl/pc_tmp","w");
     int id,num,tarif,etat;
     date d_rep,d_rec,d_sort;
@@ -183,10 +198,7 @@ void retrait(int x)
         else
         {
             etat=2;
-            date_add(&d_sort);
-            printf("entrer le prix de reparation : ");
-            scanf("%d",&tarif);
-            fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+            fprintf(g,"\n\t%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900);
         }
     }
     fclose(f);

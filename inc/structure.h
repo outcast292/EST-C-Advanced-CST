@@ -10,7 +10,7 @@ typedef struct pc
 {
     int id;
     int num;
-    char nom_clt[15];
+    char nom[15];
     int tarif;
     date d_rec,d_rep,d_sort; //d_rec pour la reception , d_rep pour la reparation , d_sort pour la sortie de l'article
     int etat;
