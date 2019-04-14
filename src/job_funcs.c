@@ -40,7 +40,17 @@ void init_file(file *f)
     f->sommet = NULL;
     p->taille = 0;
 }
+void fil(file *f){
+    FILE *z=fopen("fl/pc","r");
+    pc x;
+    while(!(feof(z))) {
+        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",x.id,x.nom,x.num,x.tarif,x.d_rec.j,x.d_rec.m,x.d_rec.a,x.d_rep.j,x.d_rep.m,x.d_rep.a,x.d_sort.j,x.d_sort.m,x.d_sort.a,x.etat);
+        if(x.etat==0){
+            enfiler(f,x);
+        }
+    }
 
+}
 
 // fonction d'enfilemennt
 void enfiler(file *f,pc x)
@@ -142,7 +152,7 @@ void enfiler(file *f,pc x)
 
         return 0;
     }*/
-void file_aff(file *f){
+void file_aff(file *f) {
     printf("tous les articles recus et pas encore diagnostiqué : \n ");
     job *tmp=f->tete;
     for(int i=0;i<f->taille;i++){
@@ -170,6 +180,9 @@ void defiler(file *f){
     f->tete=f->tete->suivant;
     free(tmp);
     f->taille--;
+    if(f->taille!=0){
+        defiler(f);
+    }
 
 }
 

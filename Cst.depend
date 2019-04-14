@@ -49,3 +49,32 @@
 
 1555103285 d:\projetcs\cst\inc\pc_funcs.h
 
+1555201335 source:d:\projects\cst\src\structure.c
+	"../inc/structure.h"
+	"stdio.h"
+
+1555200134 d:\projects\cst\inc\structure.h
+
+1555201436 source:d:\projects\cst\main.c
+	<stdio.h>
+	<stdlib.h>
+	"inc/tech_funcs.h"
+	"time.h"
+
+1554978144 d:\projects\cst\inc\tech_funcs.h
+	"../inc/structure.h"
+
+1555200134 source:d:\projects\cst\src\tech_funcs.c
+	"../inc/tech_funcs.h"
+	"../inc/structure.h"
+	"stdio.h"
+
+1555200781 source:d:\projects\cst\src\pc_funcs.c
+	"../inc/pc_funcs.h"
+	"../inc/structure.h"
+	"stdio.h"
+
+1555111753 d:\projects\cst\inc\pc_funcs.h
+
+1555200817 source:d:\projects\cst\src\menu.c
+
