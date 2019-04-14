@@ -1,5 +1,5 @@
-
 #include "../inc/structure.h"
+#include "../inc/tech_funcs.h"
 #include "stdio.h"
 #include "string.h"
 //void add_job(int id_tech)
@@ -152,6 +152,7 @@ void enfiler(file *f,pc x)
 
         return 0;
     }*/
+// func to show la file
 void file_aff(file *f) {
     printf("tous les articles recus et pas encore diagnostiqué : \n ");
     job *tmp=f->tete;
@@ -161,7 +162,8 @@ void file_aff(file *f) {
         }
 }
 //defilement + call pour changement d'etat
-void defiler(file *f){
+void defiler(file *f)
+{
     job *tmp=f->tete;
     int n=3;
     if(f->taille==0){
