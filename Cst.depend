@@ -17,32 +17,36 @@
 	"../inc/structure.h"
 	"stdio.h"
 
-1555110113 source:d:\projetcs\cst\main.c
+1555242289 source:d:\projetcs\cst\main.c
 	<stdio.h>
 	<stdlib.h>
 	"inc/tech_funcs.h"
-	"inc/screen_funcs.h"
 	"time.h"
 
-1554979270 d:\projetcs\cst\inc\tech_funcs.h
+1555238969 d:\projetcs\cst\inc\tech_funcs.h
 	"../inc/structure.h"
 
-1555104196 d:\projetcs\cst\inc\structure.h
+1555239064 d:\projetcs\cst\inc\structure.h
 
-1555103869 d:\projetcs\cst\inc\screen_funcs.h
+1555241179 d:\projetcs\cst\inc\screen_funcs.h
 
-1555110396 source:d:\projetcs\cst\src\screen_funcs.c
-	<conio.h>
-
-1555102606 source:d:\projetcs\cst\src\structure.c
+1555247123 source:d:\projetcs\cst\src\screen_funcs.c
 	"../inc/structure.h"
+	"../inc/job_funcs.h"
+	"../inc/screen_funcs.h"
+	"../inc/pc_funcs.h"
+	"stdio.h"
 
-1555102618 source:d:\projetcs\cst\src\tech_funcs.c
+1555243654 source:d:\projetcs\cst\src\structure.c
+	"../inc/structure.h"
+	"stdio.h"
+
+1555238969 source:d:\projetcs\cst\src\tech_funcs.c
 	"../inc/tech_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"
 
-1555110382 source:d:\projetcs\cst\src\pc_funcs.c
+1555247280 source:d:\projetcs\cst\src\pc_funcs.c
 	"../inc/pc_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"
@@ -77,4 +81,6 @@
 1555111753 d:\projects\cst\inc\pc_funcs.h
 
 1555200817 source:d:\projects\cst\src\menu.c
+
+1555242510 d:\projetcs\cst\inc\job_funcs.h
 

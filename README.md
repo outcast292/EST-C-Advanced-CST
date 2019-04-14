@@ -23,12 +23,12 @@
         1-repaired
 	    -1-unrepaired
 	    2-outgoing
-        
-        
-        
-        
+
+
+//pc - id nom num tarif etat date date date
+
         loook dude the functions li zedthom dyal ajouter au stack o supprimer mn stack rah derthomm 3la 7saab l other functions li mktobin f job_functions mliii nsaliw all the changes raddi hir nbedel les fprintf o fscanf o rady ykhedmooo
-        
-        oraaah fkolla change ollaa mlli katsift job l stack olla katkherjo menno rah l file dyal jobs kaytkeb again o kaytraw fih all the neccessary changes 
-        
-        
+
+        oraaah fkolla change ollaa mlli katsift job l stack olla katkherjo menno rah l file dyal jobs kaytkeb again o kaytraw fih all the neccessary changes
+
+

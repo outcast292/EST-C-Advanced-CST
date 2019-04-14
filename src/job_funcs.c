@@ -2,6 +2,7 @@
 #include "../inc/tech_funcs.h"
 #include "stdio.h"
 #include "string.h"
+#include "../inc/job_funcs.h"
 //void add_job(int id_tech)
 //{
 //    FILE *f=fopen("../fl/pc","r");
@@ -41,6 +42,7 @@ void init_file(file *f)
     p->taille = 0;
 }
 void fil(file *f){
+    init_file(f);
     FILE *z=fopen("fl/pc","r");
     pc x;
     while(!(feof(z))) {

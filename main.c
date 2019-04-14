@@ -25,5 +25,5 @@ int main()
     }
     tech t=get_tech();
     printf("Le %02d/%02d/%02d %02d:%02d\n\nbonjour %s %s  ",day,month,year,hours,minutes,t.nom,t.prenom);
-    getchar();
+   menu(&F);
 }
