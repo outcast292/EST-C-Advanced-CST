@@ -56,12 +56,22 @@ void shw_all_pc()
             printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
             break;
         case 2:
-            printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+            printf("recu le %02d/%02d/%02d ",d_rec.j,d_rec.m,d_rec.a);
+            if(tarif!=0)
+            {
+                printf(",repare le %02d/%02d/%02d pour un tarif de %d",d_rep.j,d_rep.m,d_rep.a,tarif);
+            }
+            else
+            {
+                printf("non reparé,");
+            }
+            printf(", sortie le %02d/%02d/%02d\n",d_sort.j,d_sort.m,d_sort.a);
             break;
         default:
             break;
         }
     }
+    fclose(f);
 }
 
 //searching for a pc using id
@@ -92,7 +102,16 @@ void srch_pc()
                 printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
                 break;
             case 2:
-                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+                printf("recu le %02d/%02d/%02d ",d_rec.j,d_rec.m,d_rec.a);
+                if(tarif!=0)
+                {
+                    printf(",repare le %02d/%02d/%02d pour un tarif de %d",d_rep.j,d_rep.m,d_rep.a,tarif);
+                }
+                else
+                {
+                    printf("non reparé,");
+                }
+                printf(", sortie le %02d/%02d/%02d\n",d_sort.j,d_sort.m,d_sort.a);
                 break;
             default:
                 break;
@@ -104,6 +123,7 @@ void srch_pc()
     {
         printf("article non trouvé");
     }
+    fclose(f);
 }
 //func tp show pcs due to it s categorie
 void shw_pc()
@@ -138,7 +158,16 @@ void shw_pc()
                 printf("recu le %02d/%02d/%02d,passe en reparation le %02d/%02d/%02d mais non repare\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a);
                 break;
             case 2:
-                printf("recu le %02d/%02d/%02d,repare le %02d/%02d/%02d pour un tarif de %d, sortie le %02d/%02d/%02d\n",d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,tarif,d_sort.j,d_sort.m,d_sort.a);
+                printf("recu le %02d/%02d/%02d ",d_rec.j,d_rec.m,d_rec.a);
+                if(tarif!=0)
+                {
+                    printf(",repare le %02d/%02d/%02d pour un tarif de %d",d_rep.j,d_rep.m,d_rep.a,tarif);
+                }
+                else
+                {
+                    printf("non reparé,");
+                }
+                printf(", sortie le %02d/%02d/%02d\n",d_sort.j,d_sort.m,d_sort.a);
                 break;
             default:
                 break;
@@ -146,6 +175,7 @@ void shw_pc()
         }
     }
     printf("\nil y'a %d entres dans le systeme",x);
+    fclose(f);
 }
 
 //fun to retrieve a pc
@@ -168,19 +198,24 @@ void retrait()
         {
             etat=2;
             fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900);
-            printf("le job a ete changé en etat de retrait ");
-            break;
         }
-        else{
+        else
+        {
             fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
         }
     }
     fclose(f);
     fclose(g);
     remove("fl/pc");
-    if(rename("fl/pc_tmp","fl/pc")){
-            printf("tache passe avec succé");
-}}
+    if(!(rename("fl/pc_tmp","fl/pc")))
+    {
+        printf("\nsuccé");
+    }
+    else
+    {
+        printf("error");
+    }
+}
 // initialiser pille
 
 void init_file(file *f)
@@ -203,6 +238,7 @@ void fil(file *f)
             enfiler(f,x);
         }
     }
+    fclose(z);
 
 }
 
@@ -254,20 +290,19 @@ void defiler(file *f)
         printf("aucun job est disponible");
         exit(1);
     }
-    printf("%d %s %10d  recu le %02d/%02d/%02d\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
-    do
+    printf("\n\n\t%d %s %10d  recu le %02d/%02d/%02d\n\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
+    while(n!=1 && n!=2)
     {
-        printf("est-que l'article est reparé: \n1-oui\n2-non : ");
+       printf("est-que l'article est reparé: \n\n1-oui\n\n2-non : ");
         scanf("%d",&n);
     }
-    while(n!=1 || n!=2);
     if(n==1)
     {
         change(tmp->pic->id,1);
     }
     else
     {
-        change(tmp->pic->id,2);
+        change(tmp->pic->id,-1);
     }
     f->tete=f->tete->suivant;
     free(tmp);
@@ -281,17 +316,18 @@ void defiler(file *f)
 //fonction pour changer l'etat d'un pc (reparé ou non
 void change(int x,int state)
 {
-    FILE *f=fopen("fl/pc","r"),*g=fopen("fl/pc_tmp","w");
+    FILE *f=fopen("fl/pc","r");
+    FILE *g=fopen("fl/pc_tmp","w");
     int id,num,tarif,etat;
     time_t now;
     date d_rep,d_rec,d_sort;
     char nom[15];
     while (!feof(f))
     {
-        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        fscanf(f,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
         if(id!=x)
         {
-            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+            fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
         }
         else
         {
@@ -300,10 +336,13 @@ void change(int x,int state)
             struct tm *local = localtime(&now);
             if(state==1)
             {
-                printf("merci d'entrer le prix de service ");
+                printf("merci d'entrer le prix de service : ");
                 scanf("%d",&tarif);
+                fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
             }
-            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
+            else{
+               fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
+            }
         }
     }
     fclose(f);
