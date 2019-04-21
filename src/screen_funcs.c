@@ -1,11 +1,9 @@
-#include "../inc/job_funcs.h"
 #include "../inc/structure.h"
 #include "../inc/screen_funcs.h"
 #include "../inc/pc_funcs.h"
-#include "../inc/job_funcs.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 void menu(file *f)
 {
     init_file(f);
@@ -39,7 +37,13 @@ void menu(file *f)
         retrait();
         break;
     case 6:
-        fil_aff(f);
+        printf("tous les articles recus et pas encore diagnostiqué : \n ");
+    job *tmp=f->tete;
+    for(int i=0; i<f->taille; i++)
+    {
+        printf(" %d %s 0%d    recu le %02d/%02d/%02d\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
+        tmp=tmp->suivant;
+    }
         break;
     case 7:
         defiler(f);
@@ -54,3 +58,5 @@ void menu(file *f)
 
     menu(f);
 }
+// func to show la file
+

@@ -2,38 +2,10 @@
 #include "../inc/tech_funcs.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include "time.h"
 #include "string.h"
 #include "../inc/job_funcs.h"
 #include "../inc/pc_funcs.h"
-//void add_job(int id_tech)
-//{
-//    FILE *f=fopen("../fl/pc","r");
-//   job tmp;
-//    fscanf(f,"%d",&tmp.id);
-//    tmp.id++;
-//    printf("entrer le nom de client");
-//   scanf("%s",&tmp.nom);
-// date_add(&tmp.d_rec);
-//   tmp.et_job.t=0;
-// fclose(f);
-// f=fopen("../fl/job","a");
-// fprintf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a);
-//}
-//void afficher_job()
-/*{
-    int n;
-    job tmp;
-    printf("afficher tout les jobs : ");
-    FILE* f=fopen("../fl/jobs","r");
-    while(!feof(f))
-    {
-
-        fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a)
-        printf("%d %d %s %d %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a)
-    }
-}*/
-
-
 // initialiser pille
 
 void init_file(file *f)
@@ -95,83 +67,7 @@ void enfiler(file *f,pc x)
     }
     f->taille++;
 }
-/*
-// add jobs to the stack ( we gonna only add the id of the job to the stack and change the stat based on the id
 
-    void go_to_stack(pile *p)
-    {
-
-        job tmp;
-        FILE *f= fopen("../fl/jobs","r");
-        FILE *g =fopen("../fl/jobs2","w");
-
-        while(!feof(f))
-        {
-            fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a);
-            if (strcmp(tmp.et_job,"recieved")==0)
-            {
-
-                empilement(p,tmp.id);
-                strcpy(tmp.et_job,"outgoing");
-                fprintf(f,"%d %d %s %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a);
-            }
-
-        }
-
-        fclose(g);
-        fclose(f);
-        remove("../fl/jobs");
-        rename("../fl/jobs2","../fl/jobs");
-
-    }
-
-// delete jobs from the stack
-
-
-    int delet_job_from_stack(pile *p)
-    {
-        FILE *f =fopen("../fl/jobs","r");
-        FILE *g=fopen("../fl/finished_jobs","a+");
-        job tmp
-        job *sup_ele;
-        if(p->taille == 0)
-            return -1;
-        sup_ele = p->sommet;
-        p->sommet = p->sommet->suivant;
-        p->taille--;
-
-        while(!(feof(f)))
-        {
-            fscanf(f,"%d %d %s %d/%d/%d",&tmp.id,&tmp.id_tech,&tmp.nom_client,&tmp.et_job,&tmp.d_rep.j,&tmp.d_rec.m,&tmp.d_rec.a);
-
-            if(tmp.id == sup_ele->id)
-            {
-
-                fprintf(g,"%d %d %s %s %d/%d/%d",sup_ele.id,sup_ele.id_tech,sup_ele.nom_client,"fini",sup_ele.d_rep.j,sup_ele.d_rec.m,sup_ele.d_rec.a);
-            }
-
-            else
-                fprintf(g,"%d %d %s %d/%d/%d",tmp.id,tmp.id_tech,tmp.nom_client,tmp.et_job,tmp.d_rep.j,tmp.d_rec.m,tmp.d_rec.a);
-        }
-
-        fclose(f);
-        fclose(g);
-        remove("../fl/jobs");
-        rename("../fl/jobs2","../fl/jobs");
-
-        return 0;
-    }*/
-// func to show la file
-void file_aff(file *f)
-{
-    printf("tous les articles recus et pas encore diagnostiqué : \n ");
-    job *tmp=f->tete;
-    for(int i=0; i<f->taille; i++)
-    {
-        printf(" %d %s 0%d    recu le %02d/%02d/%02d\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
-        tmp=tmp->suivant;
-    }
-}
 //defilement + call pour changement d'etat
 void defiler(file *f)
 {
@@ -205,6 +101,39 @@ void defiler(file *f)
         defiler(f);
     }
 
+}
+//fonction pour changer l'etat d'un pc (reparé ou non
+void change(int x,int state)
+{
+    FILE *f=fopen("fl/pc","r"),*g=fopen("fl/pc_tmp","w");
+    int id,num,tarif,etat;
+    time_t now;
+    date d_rep,d_rec,d_sort;
+    char nom[15];
+    while (!feof(f))
+    {
+        fscanf(f,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        if(id!=x)
+        {
+            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+        }
+        else
+        {
+            etat=state;
+            time(&now);
+            struct tm *local = localtime(&now);
+            if(state==1)
+            {
+                printf("merci d'entrer le prix de service ");
+                scanf("%d",&tarif);
+            }
+            fprintf(g,"%d %s 0%d %d %d/%d/%d %d/%d/%d %d/%d/%d %d",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
+        }
+    }
+    fclose(f);
+    fclose(g);
+    remove("fl/pc");
+    rename("fl/pc_tmp","fl/pc");
 }
 
 

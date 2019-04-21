@@ -39,3 +39,4 @@ int add_tech()   //func to add tech to the file
     fclose(tmp);
     return 0;
 }
+
