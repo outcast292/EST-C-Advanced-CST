@@ -343,6 +343,7 @@ void change(int x,int state)
             else{
                fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
             }
+
         }
     }
     fclose(f);
