@@ -47,12 +47,12 @@
 	"stdio.h"
 	"time.h"
 
-1555848997 source:d:\projetcs\cst\src\tech_funcs.c
+1555854516 source:d:\projetcs\cst\src\tech_funcs.c
 	"../inc/tech_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"
 
-1555849360 source:d:\projetcs\cst\src\pc_funcs.c
+1555854506 source:d:\projetcs\cst\src\pc_funcs.c
 	"../inc/pc_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"

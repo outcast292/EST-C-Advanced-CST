@@ -178,8 +178,9 @@ void retrait()
     fclose(f);
     fclose(g);
     remove("fl/pc");
-    if(rename("fl/pc_tmp","fl/pc"))print("tache passe avec succé");
-}
+    if(rename("fl/pc_tmp","fl/pc")){
+            printf("tache passe avec succé");
+}}
 // initialiser pille
 
 void init_file(file *f)

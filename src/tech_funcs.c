@@ -38,5 +38,5 @@ int add_tech()   //func to add tech to the file
     fprintf(tmp,"%d %s %s",id,nom,prenom);
     fclose(tmp);
     return 0;
-}
 
+}
