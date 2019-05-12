@@ -351,3 +351,27 @@ void change(int x,int state)
     remove("fl/pc");
     rename("fl/pc_tmp","fl/pc");
 }
+
+void stats(){
+    FILE *f=fopen("fl/pc","r");
+     int id,num,tarif,etat;
+    date d_rep,d_rec,d_sort;
+    char nom[15];
+    int mois=0,ci=0;
+    while(!(feof(f)))
+    {
+        fscanf(f,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        if(d_sort.m>mois){
+            mois=d_sort.m;
+        }
+    }
+    fseek(f,0,SEEK_SET);
+    while(!(feof(f)))
+    {
+        fscanf(f,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        if(d_sort.m==mois){
+            ci+=tarif;
+        }
+    }
+    printf("le total des transaction de mois precedent est : %d\n\n",ci);
+}
