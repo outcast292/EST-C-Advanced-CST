@@ -34,6 +34,8 @@ typedef struct
     int id;
     char nom[30];
     char prenom[30];
+    char nick[30];
+    char password[30];
 } tech;
 void date_add(date *d);
 

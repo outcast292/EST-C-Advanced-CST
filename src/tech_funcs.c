@@ -1,6 +1,8 @@
 #include "../inc/tech_funcs.h"
 #include "../inc/structure.h"
 #include "stdio.h"
+#include "string.h"
+
 int exist()   // dunc to test if the file exist or no, return -1 for no
 {
     FILE *tmp=fopen("fl/tech", "r");
@@ -16,11 +18,26 @@ int exist()   // dunc to test if the file exist or no, return -1 for no
 }
 tech get_tech()   // func to give back the info of the user
 {
-    tech t;
+     tech t;
     FILE *tmp=fopen("fl/tech","r");
-    fscanf(tmp,"%d %s %s",&t.id,t.prenom,t.nom);
+    printf("\n\tentrer votre login :");
+    char nom[50];
+    scanf("%s",nom);
+    while(!feof(tmp)){
+        fscanf(tmp,"%d %s %s %s %s",&t.id,&t.nick,t.prenom,t.nom,t.password);
+        if(strcmp(t.nick,nom)==0){
+            printf("entrer votre mot de passe");
+            scanf("%s",nom);
+            if(strcmp(nom,t.password)==0){
+                fclose(tmp);
+                return t;
+            }
+        }
+    }
+
     fclose(tmp);
-    return t;
+    printf("utilisateur non trouvé ,on va re-essayer");
+    return get_tech();
 }
 int add_tech()   //func to add tech to the file
 {
