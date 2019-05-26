@@ -375,21 +375,32 @@ void stats(){
     date d_rep,d_rec,d_sort;
     char nom[15];
     int mois=0,ci=0;
+    float pr=0;
     while(!(feof(f)))
     {
         fscanf(f,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        ci+=tarif;
         if(d_sort.m>mois){
             mois=d_sort.m;
         }
     }
+    printf("\n\n\n\tle total des transactions  : %d",ci);
+    ci=0;
     fseek(f,0,SEEK_SET);
     while(!(feof(f)))
     {
         fscanf(f,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
         if(d_sort.m==mois){
             ci+=tarif;
+            pr+=(float)tarif*0.25;
         }
     }
-    printf("\n\n\nle total des transaction de mois precedent est : %d\n\n",ci);
+    float t=(float)ci-pr;
+    printf("\n\n\n\tle total des transaction de mois precedent  : %d",ci);
+    printf("\n\n\n\tle pourcentage des techniçiens  : %.2f",pr);
+    printf("\n\n\n\t=======================================");
+    printf("\n\n\n\tle Totale Net de profit  : %.2f\n\n",t);
+
+
     system("PAUSE");
 }
