@@ -5,11 +5,15 @@
 #include  "inc/screen_funcs.h"
 #include  "inc/job_funcs.h"
 #include  "inc/pc_funcs.h"
+#include  "locale.h"
 time_t now;
 int hours, minutes, seconds, day, month, year;
 file F;
 int main()
+
 {
+    setlocale(LC_CTYPE,"");
+    splash();
     time(&now);
     struct tm *local = localtime(&now);
     hours = local->tm_hour;      	// get hours since midnight (0-23)
@@ -27,6 +31,8 @@ int main()
         }
     }
     tech t=get_tech();
-    printf("Le %02d/%02d/%02d %02d:%02d\n\nbonjour %s %s  ",day,month,year,hours,minutes,t.nom,t.prenom);
+    system("cls");
+    system("color FC");
+    printf("\n\n\t\t\t\t\t\t%s\n\n\t\t\t\t\t\tBonjour %s %s  ",ctime(&now),strupr(t.nom),strupr(t.prenom));
     menu(&F);
 }
