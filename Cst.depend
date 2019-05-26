@@ -55,7 +55,7 @@
 	"stdio.h"
 	"string.h"
 
-1558890832 source:d:\projetcs\cst\src\pc_funcs.c
+1558894304 source:d:\projetcs\cst\src\pc_funcs.c
 	"../inc/pc_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"
@@ -63,6 +63,7 @@
 	"stdlib.h"
 	"string.h"
 	"windows.h"
+	"../inc/screen_funcs.h"
 
 1558748827 d:\projetcs\cst\inc\pc_funcs.h
 	"../inc/structure.h"

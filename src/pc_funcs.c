@@ -5,6 +5,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "windows.h"
+#include "../inc/screen_funcs.h"
 time_t now;
 //add a pc to the file
 
@@ -304,18 +305,21 @@ void defiler(file *f)
         exit(1);
     }
     printf("\n\n\t\t%d. %s 0%10d  recu le %02d/%02d/%02d\n\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
-    while(n!=1 && n!=2)
+    while(n!=1 && n!=2 && n!=0)
     {
-       printf("\n\n\n\t\test-ce que l'article est reparé: \n\n\t1-oui\n\n\t2-non \n\n\n\t\tvotre choix: ");
+       printf("\n\n\n\t\test-ce que l'article est reparé: \n\n\t1-oui\n\n\t2-non\n\n\n\t0-quitter \n\n\n\t\tvotre choix: ");
         scanf("%d",&n);
     }
     if(n==1)
     {
         change(tmp->pic->id,1);
     }
-    else
+    else if(n==2)
     {
         change(tmp->pic->id,-1);
+    }
+    if(n==0){
+        menu(f);
     }
     f->tete=f->tete->suivant;
     free(tmp);
