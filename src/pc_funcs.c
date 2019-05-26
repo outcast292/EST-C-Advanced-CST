@@ -28,7 +28,7 @@ void add_pc()
         scanf("%d",&num);
         date_add(&d);
         fprintf(f,"%d %s %010d %d %d %d/%d/%d 0/0/0 0/0/0\n",++id,nom,num,0,0,d.j,d.m,d.a);
-        Sleep(1000);
+        Sleep(500);
 
     }
     fclose(f);
@@ -261,13 +261,13 @@ void enfiler(file *f,pc x)
 
     if(n == NULL)
     {
-        printf("allocation impossibel !");
+        printf("allocation impossible !");
         exit(1);
     }
     n->pic=(pc*)malloc(sizeof(pc));
     if(n->pic == NULL)
     {
-        printf("allocation impossibel !");
+        printf("allocation impossible !");
         exit(1);
     }
     n->pic->id=x.id;
@@ -300,7 +300,7 @@ void defiler(file *f)
     int n=3;
     if(f->taille==0)
     {
-        printf("aucun job est disponible");
+        printf("\n\naucun job est disponible");
         exit(1);
     }
     printf("\n\n\t\t%d. %s 0%10d  recu le %02d/%02d/%02d\n\n",tmp->pic->id,tmp->pic->nom,tmp->pic->num,tmp->pic->d_rec.j,tmp->pic->d_rec.m,tmp->pic->d_rec.a);
@@ -337,10 +337,10 @@ void change(int x,int state)
     char nom[15];
     while (!feof(f))
     {
-        fscanf(f,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
+        fscanf(f,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",&id,nom,&num,&tarif,&etat,&d_rec.j,&d_rec.m,&d_rec.a,&d_rep.j,&d_rep.m,&d_rep.a,&d_sort.j,&d_sort.m,&d_sort.a);
         if(id!=x)
         {
-            fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
+            fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,d_rep.j,d_rep.m,d_rep.a,d_sort.j,d_sort.m,d_sort.a);
         }
         else
         {
@@ -351,10 +351,10 @@ void change(int x,int state)
             {
                 printf("\t\t\nmerci d'entrer le prix de service : ");
                 scanf("%d",&tarif);
-                fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
+                fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
             }
             else{
-               fprintf(g,"%d %s 0%d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
+               fprintf(g,"%d %s %010d %d %d %d/%d/%d %d/%d/%d %d/%d/%d\n",id,nom,num,tarif,etat,d_rec.j,d_rec.m,d_rec.a,local->tm_mday,local->tm_mon+1,local->tm_year+1900,d_sort.j,d_sort.m,d_sort.a);
             }
 
         }
