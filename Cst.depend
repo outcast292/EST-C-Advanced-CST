@@ -17,7 +17,7 @@
 	"../inc/structure.h"
 	"stdio.h"
 
-1558888958 source:d:\projetcs\cst\main.c
+1558914241 source:d:\projetcs\cst\main.c
 	<stdio.h>
 	<stdlib.h>
 	"inc/tech_funcs.h"
@@ -32,7 +32,7 @@
 
 1558750112 d:\projetcs\cst\inc\structure.h
 
-1558913754 d:\projetcs\cst\inc\screen_funcs.h
+1558914494 d:\projetcs\cst\inc\screen_funcs.h
 	"../inc/structure.h"
 
 1558913740 source:d:\projetcs\cst\src\screen_funcs.c
