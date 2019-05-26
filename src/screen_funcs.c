@@ -65,6 +65,8 @@ void menu(file *f)
         stats();
         break;
     case 0:
+        system("cls");
+        quit();
         exit(0);
         break;
     default:
@@ -94,6 +96,30 @@ void splash()
             printf("*");
             Sleep(150);
         }
+
+
+}
+void quit()
+{
+
+   system("COLOR 0C");
+    printf("\n\n\n\t\t\t_____  _____ _____""\n"
+           "\t\t\t/  __ \/  ___|_   _|""\n"
+           "\t\t\t| /  \/\ `--.  | |""\n"
+           "\t\t\t| |     `--. \ | |""\n"
+           "\t\t\t| \__/\/\__/ / | |""\n"
+           "\t\t\t\____/\____/  \_/""\n"
+          );
+    printf("\t\t\t  Déconnexion\n\n");
+    printf("\n\n\t\t\t");
+    for (int i=0;i<19 ;i++){
+            printf("*");
+            Sleep(150);
+        }
+    printf("\n\t\t  votre solution de géstion preferé");
+    printf("\n\n\t\t\t A BIENTOT!!!!\n\n");
+    Sleep(1000);
+    system("pause");
 
 
 }

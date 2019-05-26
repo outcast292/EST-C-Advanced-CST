@@ -32,10 +32,10 @@
 
 1558750112 d:\projetcs\cst\inc\structure.h
 
-1558883600 d:\projetcs\cst\inc\screen_funcs.h
+1558913754 d:\projetcs\cst\inc\screen_funcs.h
 	"../inc/structure.h"
 
-1558889623 source:d:\projetcs\cst\src\screen_funcs.c
+1558913740 source:d:\projetcs\cst\src\screen_funcs.c
 	"../inc/structure.h"
 	"../inc/screen_funcs.h"
 	"../inc/pc_funcs.h"
@@ -55,7 +55,7 @@
 	"stdio.h"
 	"string.h"
 
-1558894304 source:d:\projetcs\cst\src\pc_funcs.c
+1558895284 source:d:\projetcs\cst\src\pc_funcs.c
 	"../inc/pc_funcs.h"
 	"../inc/structure.h"
 	"stdio.h"

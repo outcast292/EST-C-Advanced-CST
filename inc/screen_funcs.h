@@ -3,4 +3,5 @@
 #define SCREEN_FUNCS_H_INCLUDED
 void menu(file *f);
 void splash();
+void quit();
 #endif // SCREEN_FUNCS_H_INCLUDED
